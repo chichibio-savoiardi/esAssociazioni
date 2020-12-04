@@ -13,9 +13,16 @@ public class Main {
     static Client client = new Client();
 
     public static void main(String[] args) {
-        client.creaAzienda("raytheon", "srl");
-        client.creaAzienda("lockheed", "sas");
-        client.creaAzienda("leonardo", "corp");
+        client.creaAzienda("Raytheon", "srl");
+        client.creaAzienda("Boeing", "sas");
+        client.creaAzienda("Leonardo", "corp");
+        client.creaAzienda("Alphabet", "cong");
+        client.creaAzienda("Apple", "ss");
+        client.creaDipendente("John", "Browning", "17/12/1896");
+        client.creaDipendente("Mark", "Serbu", "03/11/1923");
+        client.creaDipendente("Donald", "Trump", "02/05/2001");
+        client.creaDipendente("Joe", "Biden", "27/09/1984");
+        client.creaDipendente("Jo", "Jorgensen", "01/02/1903");
         client.start();
     }
 }
