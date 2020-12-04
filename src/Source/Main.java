@@ -7,7 +7,6 @@
 package Source;
 
 import java.util.Scanner;
-import Source.javaUtils.*;
 
 public class Main {
     private static Scanner in = new Scanner(System.in);

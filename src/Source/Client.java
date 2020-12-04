@@ -1,7 +1,7 @@
 package Source;
 
 import java.util.Scanner;
-import Source.javaUtils.*;
+import Source.JavaUtils.*;
 
 public class Client {
     private Scanner clientIn = new Scanner(System.in);

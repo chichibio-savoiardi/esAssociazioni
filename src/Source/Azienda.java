@@ -1,6 +1,6 @@
 package Source;
 
-import Source.javaUtils.*;
+import Source.JavaUtils.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
