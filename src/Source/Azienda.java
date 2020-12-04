@@ -76,6 +76,10 @@ public class Azienda {
 
     public void incCapitaleSociale(Dipendente dipendenteIn) {
         capitaleSociale += 1;
+        if (dipendenteIn.isAssunto()) {
+            System.out.println("Error\nDipendente gia assunto");
+            return;
+        }
         dipendentiAzienda.add(dipendenteIn);
         dipendenteIn.assumi(nome);
     }
@@ -84,6 +88,16 @@ public class Azienda {
         capitaleSociale -= 1;
         dipendentiAzienda.remove(dipendenteIn);
         dipendenteIn.licenzia();
+    }
+
+    public void printDipendentiAzienda() {
+        if (dipendentiAzienda.size() == 0) {
+            System.out.println("Non ci sono dipendenti nel database\n");
+            return;
+        }
+        for (int i = 0; i < dipendentiAzienda.size(); i++) {
+            System.out.println(i + ": " + dipendentiAzienda.get(i));
+        }
     }
 
     public String toString() {

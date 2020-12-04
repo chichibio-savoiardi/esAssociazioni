@@ -13,6 +13,11 @@ public class Main {
     static Client client = new Client();
 
     public static void main(String[] args) {
+        generatore();
+        client.start();
+    }
+
+    public static void generatore() {
         client.creaAzienda("Raytheon", "srl");
         client.creaAzienda("Boeing", "sas");
         client.creaAzienda("Leonardo", "corp");
@@ -23,7 +28,6 @@ public class Main {
         client.creaDipendente("Donald", "Trump", "02/05/2001");
         client.creaDipendente("Joe", "Biden", "27/09/1984");
         client.creaDipendente("Jo", "Jorgensen", "01/02/1903");
-        client.start();
     }
 }
 //fin
