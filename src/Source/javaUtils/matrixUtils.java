@@ -3,7 +3,7 @@ package Source.javaUtils;
 import java.util.*;
 import java.lang.*;
 
-public class matrixUtils {
+public class MatrixUtils {
     static Scanner matrIn = new Scanner(System.in);
 
     public void print(int[][] matr) {

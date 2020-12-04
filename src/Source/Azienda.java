@@ -1,23 +1,27 @@
 package Source;
 
-import Source.javaUtils.arrayUtils;
+import Source.javaUtils.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Azienda {
-    protected String nome;
-    protected String tipoAssociazione;
-    protected partitaIVA partitaIVA = new partitaIVA();
+    private String nome;
+    private String tipoAssociazione;
+    private partitaIVA partitaIVA = new partitaIVA();
     private int capitaleSociale;
-    private arrayUtils arrayUtils = new arrayUtils();
-    private Dipendente[] Dipendente;
+    private ArrayUtils arrayUtils = new ArrayUtils();
+    protected List<Dipendente> dipendentiAzienda;
 
-    public Azienda(String nome, String tipo, int capitaleSociale) {
-        this.capitaleSociale = capitaleSociale;
+    public Azienda(String nome, String tipo) {
+        this.capitaleSociale = 0;
         this.partitaIVA.paese[0] = 'I';
         this.partitaIVA.paese[1] = 'T';
         arrayUtils.randomFill(partitaIVA.numero, 0, 9);
         this.nome = nome;
         this.tipoAssociazione = tipo;
-        Dipendente = new Dipendente[capitaleSociale];
+        dipendentiAzienda = new ArrayList<Dipendente>();
     }
 
     public int getCapitaleSociale() {
@@ -28,12 +32,20 @@ public class Azienda {
         this.capitaleSociale = capitaleSociale;
     }
 
-    public Source.partitaIVA getPartitaIVA() {
-        return partitaIVA;
+    public int[] getNumeroIVA() {
+        return partitaIVA.numero;
     }
 
-    public void setPartitaIVA(Source.partitaIVA partitaIVA) {
-        this.partitaIVA = partitaIVA;
+    public void setNumeroIVA(int[] numero) {
+        this.partitaIVA.numero = numero;
+    }
+
+    public char[] getPaeseIVA() {
+        return partitaIVA.paese;
+    }
+
+    public void setPaeseIVA(char[] paese) {
+        this.partitaIVA.paese = paese;
     }
 
     public String getNome() {
@@ -55,19 +67,33 @@ public class Azienda {
     public String dimensioneImpresa() {
         if (capitaleSociale < 50) {
             return "Piccola";
-        } else if (capitaleSociale >= 50 && capitaleSociale <= 250) {
-            return "Media";
         } else if (capitaleSociale > 250) {
             return "Grande";
+        } else {
+            return "Media";
         }
-        return "no";
     }
 
-    public void incCapitaleSociale(int quantita) {
-        capitaleSociale += quantita;
+    public void incCapitaleSociale(Dipendente dipendenteIn) {
+        capitaleSociale += 1;
+        dipendentiAzienda.add(dipendenteIn);
+        dipendenteIn.assumi(nome);
     }
 
-    public void decCapitaleSociale(int quantita) {
-        capitaleSociale -= quantita;
+    public void decCapitaleSociale(Dipendente dipendenteIn) {
+        capitaleSociale -= 1;
+        dipendentiAzienda.remove(dipendenteIn);
+        dipendenteIn.licenzia();
+    }
+
+    public String toString() {
+        return "Azienda{" +
+                "nome='" + nome + '\'' +
+                ", tipoAssociazione='" + tipoAssociazione + '\'' +
+                ", partitaIVA.paese=" + Arrays.toString(partitaIVA.paese) +
+                ", partitaIVA.numero=" + Arrays.toString(partitaIVA.numero) +
+                ", capitaleSociale=" + capitaleSociale +
+                ", dipendentiAzienda=" + dipendentiAzienda +
+                '}';
     }
 }

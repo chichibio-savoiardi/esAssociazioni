@@ -3,7 +3,7 @@ package Source.javaUtils;
 import java.util.*;
 import java.lang.*;
 
-public class basicUtils {
+public class BasicUtils {
     static Scanner basicIn = new Scanner(System.in);
 
     public int fattoriale(int n) {

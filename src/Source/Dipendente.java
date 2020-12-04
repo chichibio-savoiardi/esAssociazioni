@@ -74,11 +74,31 @@ public class Dipendente {
     }
 
     public int calcolaEta() {
-        int eta = 0, nascita = Integer.parseInt(annoNascita);
-        byte sas;
-        String temp = annoNascita;
-        temp = temp.replaceAll("/", "");
+        int eta = 0, nascita = 0;
+        //
         return eta;
+    }
+
+    public void assumi(String nomeAzienda) {
+        assuntoPresso = nomeAzienda;
+        assunto = true;
+    }
+
+    public void licenzia() {
+        assuntoPresso = "Empty";
+        assunto = false;
+    }
+
+    public String toString() {
+        return "Dipendente{" +
+                "nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", annoNascita='" + annoNascita + '\'' +
+                ", assuntoPresso='" + assuntoPresso + '\'' +
+                ", sposato=" + sposato +
+                ", assunto=" + assunto +
+                ", reddito=" + reddito +
+                '}';
     }
 }
 // fin

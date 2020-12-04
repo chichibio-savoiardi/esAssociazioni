@@ -3,7 +3,7 @@ package Source.javaUtils;
 import java.util.*;
 import java.lang.*;
 
-public class arrayUtils {
+public class ArrayUtils {
     static Scanner arrayIn = new Scanner(System.in);
 
     public void fill0123(int[] arr) {
