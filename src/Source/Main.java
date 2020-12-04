@@ -13,6 +13,9 @@ public class Main {
     static Client client = new Client();
 
     public static void main(String[] args) {
+        client.creaAzienda("raytheon", "srl");
+        client.creaAzienda("lockheed", "sas");
+        client.creaAzienda("leonardo", "corp");
         client.start();
     }
 }

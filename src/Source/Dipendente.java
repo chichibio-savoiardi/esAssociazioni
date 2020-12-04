@@ -1,6 +1,8 @@
 package Source;
 
 import java.lang.String;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Dipendente {
     private String nome, cognome, annoNascita, assuntoPresso;
@@ -73,10 +75,17 @@ public class Dipendente {
         this.sposato = sposato;
     }
 
-    public int calcolaEta() {
-        int eta = 0, nascita = 0;
-        //
-        return eta;
+    public int calcolaEta(){// copied from
+        int anno = Integer.parseInt(annoNascita.substring(6, 10));
+        int mese = Integer.parseInt(annoNascita.substring(3, 5));
+        int giorno = Integer.parseInt(annoNascita.substring(0, 2));
+
+        LocalDate today = LocalDate.now();
+        LocalDate birthday = LocalDate.of(anno, mese, giorno);
+
+        Period p = Period.between(birthday, today);
+
+        return p.getYears();
     }
 
     public void assumi(String nomeAzienda) {
