@@ -189,7 +189,12 @@ public class Client {
                 printDipendenti();
                 System.out.println("Inerisci l'indice del dipendente che vuoi eliminare");
                 int dipendenteToRemove = clientIn.nextInt();
-
+                try {
+                    cancDipendente(dipendenteToRemove);
+                } catch (Exception e) {
+                    System.out.println("Exception!\nL'indice è fuori dalla lista");
+                    gestoreDipendenti();
+                }
                 System.out.println("Dipendente eliminato");
                 printDipendenti();
             }
