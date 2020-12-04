@@ -1,6 +1,5 @@
 package Source;
 
-import java.lang.String;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -75,7 +74,7 @@ public class Dipendente {
         this.sposato = sposato;
     }
 
-    public int calcolaEta(){// copied from
+    public int calcolaEta() {// copied from emanuele
         int anno = Integer.parseInt(annoNascita.substring(6, 10));
         int mese = Integer.parseInt(annoNascita.substring(3, 5));
         int giorno = Integer.parseInt(annoNascita.substring(0, 2));
@@ -89,13 +88,34 @@ public class Dipendente {
     }
 
     public void assumi(String nomeAzienda) {
+        reddito += 1000;
         assuntoPresso = nomeAzienda;
         assunto = true;
     }
 
     public void licenzia() {
+        reddito -= reddito;
         assuntoPresso = "Empty";
         assunto = false;
+    }
+
+    public void sposa(Dipendente dipendenteIn) {
+
+        sposato = true;
+        dipendenteIn.setSposato(true);
+    }
+
+    public void divorzia(Dipendente dipendenteIn) {
+        if (!sposato) {
+            System.out.println(nome + " e' gia divorziato");
+            return;
+        }
+        if (!dipendenteIn.isSposato()) {
+            System.out.println(dipendenteIn.getNome() + " e' gia divorziato");
+            return;
+        }
+        sposato = false;
+        dipendenteIn.setSposato(false);
     }
 
     public String toString() {
@@ -104,9 +124,9 @@ public class Dipendente {
                 ", cognome='" + cognome + '\'' +
                 ", annoNascita='" + annoNascita + '\'' +
                 ", assuntoPresso='" + assuntoPresso + '\'' +
-                ", sposato=" + sposato +
                 ", assunto=" + assunto +
                 ", reddito=" + reddito +
+                ", sposato=" + sposato +
                 '}';
     }
 }
