@@ -73,7 +73,7 @@ public class Client {
                         Premere 3 per eliminare un'azienda
                         Premere 4 per assumere un dipendente in una azienda
                         Premere 5 per licenziare un dipendente da una azienda
-                        Premere 6 per vedere i dipendenti di un'azienda
+                        Premere 6 per vedere i dipendenti e la grandezza di un'azienda
                         Premere 0 per tornare indietro
                         -+-+-""");
         int gestoreAziendeSwitchVar = clientIn.nextInt();
@@ -143,7 +143,13 @@ public class Client {
                 printAziende();
                 System.out.println("Inserisci l'indice della tua azienda");
                 int indexAzienda = clientIn.nextInt();
-                aziende.get(indexAzienda).printDipendentiAzienda();
+                try {
+                    aziende.get(indexAzienda).printDipendentiAzienda();
+                } catch (Exception e) {
+                    System.out.println("Exception!\nL'indice è fuori dalla lista");
+                    gestoreAziende();
+                }
+                System.out.println("Grandezza dell'azienda: " + aziende.get(indexAzienda).dimensioneImpresa());
             }
             default -> gestoreAziende();
         }
@@ -203,7 +209,6 @@ public class Client {
                 printDipendenti();
                 System.out.println("Inserisci l'indice del dipendente 1");
                 int dipendente1 = clientIn.nextInt();
-                printDipendenti();
                 System.out.println("Inserisci l'indice del dipendente 2");
                 int dipendente2 = clientIn.nextInt();
                 try {
@@ -212,13 +217,13 @@ public class Client {
                     System.out.println("Exception!\nL'indice è fuori dalla lista");
                     gestoreDipendenti();
                 }
+                System.out.println(dipendenti.get(dipendente1).getNome() + " e " + dipendenti.get(dipendente2).getNome() + " sono sposati adesso, finche utente non li separi");
             }
             case 6 -> {
                 clientIn = new Scanner(System.in);
                 printDipendenti();
                 System.out.println("Inserisci l'indice del dipendente 1");
                 int dipendente1 = clientIn.nextInt();
-                printDipendenti();
                 System.out.println("Inserisci l'indice del dipendente 2");
                 int dipendente2 = clientIn.nextInt();
                 try {
@@ -227,6 +232,7 @@ public class Client {
                     System.out.println("Exception!\nL'indice è fuori dalla lista");
                     gestoreDipendenti();
                 }
+                System.out.println(dipendenti.get(dipendente1).getNome() + " e " + dipendenti.get(dipendente2).getNome() + " sono divorziati");
             }
             default -> gestoreDipendenti();
         }

@@ -75,16 +75,20 @@ public class Azienda {
     }
 
     public void incCapitaleSociale(Dipendente dipendenteIn) {
-        capitaleSociale += 1;
         if (dipendenteIn.isAssunto()) {
             System.out.println("Error\nDipendente gia assunto");
             return;
         }
+        capitaleSociale += 1;
         dipendentiAzienda.add(dipendenteIn);
         dipendenteIn.assumi(nome);
     }
 
     public void decCapitaleSociale(Dipendente dipendenteIn) {
+        if (!dipendenteIn.isAssunto()) {
+            System.out.println("Error\nDipendente gia non assunto");
+            return;
+        }
         capitaleSociale -= 1;
         dipendentiAzienda.remove(dipendenteIn);
         dipendenteIn.licenzia();
